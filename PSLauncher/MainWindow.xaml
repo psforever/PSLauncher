@@ -26,7 +26,7 @@
         <Label x:Name="serverLbl" Content="Connected to Server:" HorizontalAlignment="Left" Margin="420,150,0,0" VerticalAlignment="Top" Height="24" Width="125"/>
         <Button x:Name="accountBtn" Content="My Account" Margin="421,405,8,11" FontSize="15" BorderThickness="0" Background="#FF1C272E" BorderBrush="#FF1C272E" Foreground="#FFAAAAAA" Click="accountBtn_Click"/>
         <Label x:Name="title" Content="Development Launcher" HorizontalAlignment="Left" Margin="422,25,0,0" VerticalAlignment="Top" Height="22" Width="202" Foreground="White" Panel.ZIndex="2"/>
-        <Image x:Name="image" Margin="422,52,10,306" Source="img/275x125-logo.png" Width="202" Height="92"/>
+        <Image HorizontalAlignment="Left" Height="100" Margin="422,47,0,0" VerticalAlignment="Top" Width="202" Source="launcherlogo.png"/>
 
     </Grid>
 </Window>

@@ -28,6 +28,9 @@ namespace PSLauncher
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Download Manifest for Server information.
+        /// </summary>
         public void RefreshConnection()
         {
             var manifest = DownloadManifestXML(Properties.Settings.Default.Manifest);
@@ -46,6 +49,10 @@ namespace PSLauncher
             UpdateClientIni(manifest);
         }
 
+        /// <summary>
+        /// Update Launcher Patch Information
+        /// </summary>
+        /// <param name="manifest">Manifest File</param>
         private void SetPatchNotes(XDocument manifest)
         {
             patchNotesTxt.Text = string.Empty;
@@ -61,13 +68,17 @@ namespace PSLauncher
                     var dateValue = change.Attribute("date").Value;
                     var changeValue = change.Value.Trim();
 
-                    patchNotesTxt.Text += " - " + dateValue + ": " + changeValue + Environment.NewLine;
+                    patchNotesTxt.Text += " - " + dateValue + ": \t" + changeValue + Environment.NewLine;
                 }
 
                 patchNotesTxt.Text += Environment.NewLine;
             }
         }
 
+        /// <summary>
+        /// Update client.ini to use appropriate server settings.
+        /// </summary>
+        /// <param name="manifest">Manifest File</param>
         private void UpdateClientIni(XDocument manifest)
         {
             var path = GetCurrentPath();
@@ -113,6 +124,9 @@ namespace PSLauncher
             playBtn.IsEnabled = true;
         }
 
+        /// <summary>
+        /// Run The Client
+        /// </summary>
         private void RunGame()
         {
             var path = GetCurrentPath();
@@ -150,6 +164,10 @@ namespace PSLauncher
             }
         }
 
+        /// <summary>
+        /// Get the path the current executable is located in.
+        /// </summary>
+        /// <returns>Path</returns>
         private string GetCurrentPath()
         {
             var currentPath = System.IO.Directory.GetCurrentDirectory();
@@ -159,6 +177,11 @@ namespace PSLauncher
             return currentPath;
         }
 
+        /// <summary>
+        /// Download Manifest Online
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
         private XDocument DownloadManifestXML(string url)
         {
             /*
