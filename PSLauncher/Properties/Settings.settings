@@ -1,0 +1,15 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="PSLauncher.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Manifest" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://gist.githubusercontent.com/psmook/5cc13886da9da8078e56a65a5a2b082f/raw/</Value>
+    </Setting>
+    <Setting Name="DefaultManifest" Type="System.String" Scope="User">
+      <Value Profile="(Default)">https://gist.githubusercontent.com/psmook/5cc13886da9da8078e56a65a5a2b082f/raw/</Value>
+    </Setting>
+    <Setting Name="AccountURL" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://psforever.net</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
