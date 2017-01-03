@@ -25,7 +25,8 @@ namespace PSLauncher.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://gist.githubusercontent.com/psmook/5cc13886da9da8078e56a65a5a2b082f/raw/")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://raw.githubusercontent.com/PSEmulator/PSLauncher/master/PSLauncher/manifes" +
+            "t.xml")]
         public string Manifest {
             get {
                 return ((string)(this["Manifest"]));
@@ -37,7 +38,8 @@ namespace PSLauncher.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://gist.githubusercontent.com/psmook/5cc13886da9da8078e56a65a5a2b082f/raw/")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://raw.githubusercontent.com/PSEmulator/PSLauncher/master/PSLauncher/manifes" +
+            "t.xml")]
         public string DefaultManifest {
             get {
                 return ((string)(this["DefaultManifest"]));

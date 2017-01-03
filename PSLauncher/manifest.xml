@@ -28,4 +28,4 @@
     </patch>
   </updates>
 </psforever>
-<!-- This is a temporary method that the launcher will use to work back and forth with the launcher and the emulator service -->
+<!-- This is the old method used by the launcher that is to be replaced by manifest.json -->

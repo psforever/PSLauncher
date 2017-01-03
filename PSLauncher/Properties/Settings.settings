@@ -3,10 +3,10 @@
   <Profiles />
   <Settings>
     <Setting Name="Manifest" Type="System.String" Scope="User">
-      <Value Profile="(Default)">https://gist.githubusercontent.com/psmook/5cc13886da9da8078e56a65a5a2b082f/raw/</Value>
+      <Value Profile="(Default)">https://raw.githubusercontent.com/PSEmulator/PSLauncher/master/PSLauncher/manifest.xml</Value>
     </Setting>
     <Setting Name="DefaultManifest" Type="System.String" Scope="User">
-      <Value Profile="(Default)">https://gist.githubusercontent.com/psmook/5cc13886da9da8078e56a65a5a2b082f/raw/</Value>
+      <Value Profile="(Default)">https://raw.githubusercontent.com/PSEmulator/PSLauncher/master/PSLauncher/manifest.xml</Value>
     </Setting>
     <Setting Name="AccountURL" Type="System.String" Scope="User">
       <Value Profile="(Default)">http://psforever.net</Value>
