@@ -23,17 +23,9 @@ namespace PSLauncher
     /// </summary>
     public partial class MainWindow : Window
     {
-        /// <summary>
-        /// Quick Workaround for VB.net code. 
-        /// Only one should instantiate so 
-        /// it should be fine.
-        /// </summary>
-        public static MainWindow MainWindowClass { get; private set; }
-
         public MainWindow()
         {
             InitializeComponent();
-            MainWindowClass = this;
         }
 
         public void RefreshConnection()
@@ -85,12 +77,21 @@ namespace PSLauncher
             {
                 if (MessageBox.Show("The launcher is not currently in the PSForever directory.") == MessageBoxResult.OK)
                 {
+                    /*
+                     * This runs when using a Release build of the program.
+                     * This allows functionality when running in debug mode inside of Visual Studio.
+                     */
 #if !DEBUG
                     Close();
 #endif
                 }
                 else
                 {
+                    /*
+                     * Write the client.ini information. This is obtained through the manifest that
+                     * is hosted online. These are changeable through both the client, and the settings
+                     * file that is available.
+                     */
                     System.IO.File.Copy(file, file + ".bak", true);
 
                     using (var strWriter = new System.IO.StreamWriter(file, false))
@@ -122,6 +123,10 @@ namespace PSLauncher
             {
                 if (MessageBox.Show("The Launcher is not currently in the PSForever directory.") == MessageBoxResult.OK)
                 {
+                    /*
+                     * This runs when using a Release build of the program.
+                     * This allows functionality when running in debug mode inside of Visual Studio.
+                     */
 #if !DEBUG
                     Close();
 #endif
@@ -131,10 +136,14 @@ namespace PSLauncher
             {
                 app = new System.Diagnostics.Process();
                 app.StartInfo.FileName = file;
+                // Argument "/K:StagingTest" required to bypass Launcher warning error.
                 app.StartInfo.Arguments = "/K:StagingTest";
 
                 app.Start();
-
+                /*
+                 * This runs when using a Release build of the program.
+                 * This allows functionality when running in debug mode inside of Visual Studio.
+                 */
 #if !DEBUG
                 Close();
 #endif
@@ -152,6 +161,12 @@ namespace PSLauncher
 
         private XDocument DownloadManifestXML(string url)
         {
+            /*
+             * Downloads the XML manifest to use to provide settings to the
+             * application. This XML contains up-to-date server information,
+             * server patch information, even [potentially] client mod 
+             * information.
+             */
             HttpWebRequest request;
             HttpWebResponse response;
             XDocument manifest;
@@ -166,6 +181,7 @@ namespace PSLauncher
 
             response.Close();
 
+            // Load Document if it exists
             if (response.StatusCode == HttpStatusCode.OK)
             {
                 manifest = XDocument.Load(url);
@@ -176,6 +192,10 @@ namespace PSLauncher
             return null;
         }
 
+        /// <summary>
+        /// Method used to update progress bar with animation.
+        /// </summary>
+        /// <param name="value">float</param>
         private void UpdateProgress(int value)
         {
             var duration = new Duration(TimeSpan.FromSeconds(0.1));
@@ -183,6 +203,11 @@ namespace PSLauncher
             prgBar.BeginAnimation(ProgressBar.ValueProperty, doubleAnimation);
         }
 
+        /// <summary>
+        /// Progress Bar Value Changed Event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void prgBar_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             prgLbl.Content = (int)(prgBar.Value) + " / 100";
@@ -195,11 +220,21 @@ namespace PSLauncher
                 prgLbl.Content = "Complete";
         }
 
+        /// <summary>
+        /// Play Button Click Event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void playBtn_Click(object sender, RoutedEventArgs e)
         {
             RunGame();
         }
 
+        /// <summary>
+        /// Window Loaded Event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void mainWindow_Loaded(object sender, RoutedEventArgs e)
         {
             patchNotesTxt.Text = "Currently loading the launcher.\n"
@@ -208,24 +243,49 @@ namespace PSLauncher
             RefreshConnection();
         }
 
+        /// <summary>
+        /// Change Button Click Event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void changeBtn_Click(object sender, RoutedEventArgs e)
         {
-            var changeServers = new ChangeServers();
+            var changeServers = new ChangeServers(this);    // Pass the current instance as the MainWindow to be used.
             changeServers.Show();
         }
 
+        /// <summary>
+        /// Refresh Button Click Event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void refreshBtn_Click(object sender, RoutedEventArgs e)
         {
             RefreshConnection();
         }
 
+        /// <summary>
+        /// Account Button Click Event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void accountBtn_Click(object sender, RoutedEventArgs e)
         {
             System.Diagnostics.Process.Start(Properties.Settings.Default.AccountURL);
         }
 
+        /// <summary>
+        /// Logo Mouse Press Event.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void logo_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            /*
+             * This Message Box was originally done by the clever mook, known on Github to the PSForever project as PSmook.
+             * This message box has been preserved to remember his original work on the Winform version of the launcher that
+             * was used before being rewritten.
+             */
             MessageBox.Show(System.Text.Encoding.UTF8.GetString(System.Convert.FromBase64String("Q3JlYXRlZCBieSBtb29rIChwc21vb2sp")));
         }
     }

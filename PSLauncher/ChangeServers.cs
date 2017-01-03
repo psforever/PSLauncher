@@ -12,11 +12,28 @@ namespace PSLauncher
 {
     public partial class ChangeServers : Form
     {
-        public ChangeServers()
+        /// <summary>
+        /// Main window that the game launched with
+        /// </summary>
+        private MainWindow mainWindow;
+
+        // Removed Default Constructor because this form cannot function without it.
+
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="mainWindow"></param>
+        public ChangeServers(MainWindow mainWindow)
         {
             InitializeComponent();
+            this.mainWindow = mainWindow;   // Assign the appropriate instance of MainWindow
         }
 
+        /// <summary>
+        /// Button Press Event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Save_Click(object sender, EventArgs e)
         {
             var request = (HttpWebRequest)WebRequest.Create(ManifestFile.Text.ToString());
@@ -34,22 +51,37 @@ namespace PSLauncher
                 Properties.Settings.Default.Manifest = ManifestFile.Text;
                 Properties.Settings.Default.Save();
 
-                MainWindow.MainWindowClass.RefreshConnection();
+                mainWindow.RefreshConnection();
             }
 
             Close();
         }
 
+        /// <summary>
+        /// Cancel Click Event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Cancel_Click(object sender, EventArgs e)
         {
             Close();
         }
 
+        /// <summary>
+        /// Reset Click Event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Reset_Click(object sender, EventArgs e)
         {
             ManifestFile.Text = Properties.Settings.Default.DefaultManifest;
         }
 
+        /// <summary>
+        /// Form Load Event
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ChangeServers_Load(object sender, EventArgs e)
         {
             ManifestFile.Text = Properties.Settings.Default.Manifest;
