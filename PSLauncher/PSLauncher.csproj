@@ -110,14 +110,5 @@
   <ItemGroup>
     <Resource Include="manifest.xml" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\PSNetCommon\PSNetCommon.csproj">
-      <Project>{5155a175-15a4-4de5-980e-2c0ce2940e36}</Project>
-      <Name>PSNetCommon</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="launcherlogo.png" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
