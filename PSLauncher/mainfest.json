@@ -1,6 +1,6 @@
 ﻿{
   "networkInfo": {
-    "name": "PSEmulator",
+    "name": "PSForever",
     "url": "http://psemulator.org",
     "location": "EU FR",
     "servers": [
@@ -18,7 +18,7 @@
         "version": "3.6.3",
         "changes": [
           {
-            "date": "2016-07-31T16:02:03",
+            "date": "2016-07-31",
             "value": "PSForever test server goes live."
           }
         ]
@@ -27,11 +27,11 @@
         "version": "3.6.3a",
         "changes": [
           {
-            "date": "2016-12-31T16:02:37",
+            "date": "2016-12-31",
             "value": "Emulator C++ rewrite officially in progress."
           },
           {
-            "date": "2017-01-03T16:02:37",
+            "date": "2017-01-03",
             "value": "Emulator Launcher completely rewritten."
           }
         ]

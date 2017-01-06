@@ -3,10 +3,10 @@
   <Profiles />
   <Settings>
     <Setting Name="Manifest" Type="System.String" Scope="User">
-      <Value Profile="(Default)">https://raw.githubusercontent.com/PSEmulator/PSLauncher/master/PSLauncher/manifest.xml</Value>
+      <Value Profile="(Default)">https://raw.githubusercontent.com/PSEmulator/PSLauncher/master/PSLauncher/mainfest.json</Value>
     </Setting>
     <Setting Name="DefaultManifest" Type="System.String" Scope="User">
-      <Value Profile="(Default)">https://raw.githubusercontent.com/PSEmulator/PSLauncher/master/PSLauncher/manifest.xml</Value>
+      <Value Profile="(Default)">https://raw.githubusercontent.com/PSEmulator/PSLauncher/master/PSLauncher/mainfest.json</Value>
     </Setting>
     <Setting Name="AccountURL" Type="System.String" Scope="User">
       <Value Profile="(Default)">http://www.psemulator.org/forums</Value>

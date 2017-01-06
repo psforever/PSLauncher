@@ -51,7 +51,7 @@ namespace PSLauncher
                 Properties.Settings.Default.Manifest = ManifestFile.Text;
                 Properties.Settings.Default.Save();
 
-                mainWindow.RefreshConnection();
+                mainWindow.RefreshConnectionJSON();
             }
 
             Close();
