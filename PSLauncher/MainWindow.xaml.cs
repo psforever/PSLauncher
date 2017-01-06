@@ -265,7 +265,7 @@ namespace PSLauncher
             {
                 foreach(var change in patch.Changes)
                 {
-                    patchNotesTxt.Text += $" - {change.Date}: \t{change.Value}{Environment.NewLine}";
+                    patchNotesTxt.Text += $" - {change.Date.ToShortDateString()}: \t{change.Value}{Environment.NewLine}";
                 }
 
                 patchNotesTxt.Text += Environment.NewLine;
