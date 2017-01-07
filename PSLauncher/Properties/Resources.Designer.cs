@@ -59,5 +59,32 @@ namespace PSLauncher.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Analyzing local game data....
+        /// </summary>
+        internal static string CheckSumInfoString {
+            get {
+                return ResourceManager.GetString("CheckSumInfoString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The specified Planetside directory could not locate a file. Please ensure your directory is correct..
+        /// </summary>
+        internal static string NoPlanetsideDirFound {
+            get {
+                return ResourceManager.GetString("NoPlanetsideDirFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select the Planetside install directory..
+        /// </summary>
+        internal static string PlanetsideDirPrompt {
+            get {
+                return ResourceManager.GetString("PlanetsideDirPrompt", resourceCulture);
+            }
+        }
     }
 }

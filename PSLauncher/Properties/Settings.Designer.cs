@@ -12,7 +12,7 @@ namespace PSLauncher.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "14.0.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -58,6 +58,54 @@ namespace PSLauncher.Properties {
             }
             set {
                 this["AccountURL"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("104.236.204.206")]
+        public string UpdateServerIP {
+            get {
+                return ((string)(this["UpdateServerIP"]));
+            }
+            set {
+                this["UpdateServerIP"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("launcher")]
+        public string UpdateServerUser {
+            get {
+                return ((string)(this["UpdateServerUser"]));
+            }
+            set {
+                this["UpdateServerUser"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("psemu")]
+        public string UpdateServerPassword {
+            get {
+                return ((string)(this["UpdateServerPassword"]));
+            }
+            set {
+                this["UpdateServerPassword"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string PlanetsideInstallDir {
+            get {
+                return ((string)(this["PlanetsideInstallDir"]));
+            }
+            set {
+                this["PlanetsideInstallDir"] = value;
             }
         }
     }

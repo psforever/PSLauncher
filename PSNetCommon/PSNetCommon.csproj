@@ -44,10 +44,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CheckSum.cs" />
+    <Compile Include="Download\Downloader.cs" />
     <Compile Include="Download\Update.cs" />
     <Compile Include="Download\UpdateCheck.cs" />
     <Compile Include="EmulatorInfo.cs" />
     <Compile Include="LauncherInfo.cs" />
+    <Compile Include="Models\FileCheckSumRequest.cs" />
+    <Compile Include="Models\FileCheckSumResponse.cs" />
     <Compile Include="NetworkInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

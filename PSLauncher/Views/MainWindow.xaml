@@ -8,15 +8,16 @@
         Title="Emulator Development Launcher" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" Height="480" Width="640" ResizeMode="NoResize"  FontSize="11" WindowStyle="ThreeDBorderWindow" Background="#FF1C232E" Loaded="mainWindow_Loaded">
     <!--Icon="img/icon.ico"-->
     <Grid>
-        <TextBox x:Name="patchNotesTxt" Margin="6,25,221,10" TextWrapping="Wrap" Text="" IsReadOnlyCaretVisible="True" IsReadOnly="True" Foreground="#FFAAAAAA" BorderThickness="0">
+        <TextBox x:Name="patchNotesTxt" Margin="6,25,221,10" TextWrapping="Wrap" Text="{Binding PatchNotes}" IsReadOnlyCaretVisible="True" IsReadOnly="True" Foreground="#FFAAAAAA" BorderThickness="0">
             <TextBox.Background>
                 <SolidColorBrush Color="White" Opacity="0.15"/>
             </TextBox.Background>
         </TextBox>
         <Label x:Name="label" Content="Patch Notes:" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FFAAAAAA"/>
-        <ProgressBar x:Name="prgBar" Height="76" Margin="421,204,9,0" VerticalAlignment="Top" ValueChanged="prgBar_ValueChanged" Orientation="Vertical" Background="#FF1C232E" BorderThickness="0"/>
+        <ProgressBar x:Name="prgBar" Height="76" Margin="421,204,9,0" VerticalAlignment="Top" ValueChanged="prgBar_ValueChanged" Orientation="Vertical" Background="#FF1C232E" BorderThickness="0"
+                     IsEnabled="{Binding Progr}"/>
         <Border x:Name="infoBox" BorderBrush="Black" BorderThickness="0" Height="46" Margin="420,150,8,0" VerticalAlignment="Top" Background="{DynamicResource {x:Static SystemColors.InfoBrushKey}}" CornerRadius="5">
-            <Label x:Name="infoLbl" Content="None" Margin="-1,17,9,0" FontWeight="Bold"/>
+            <Label x:Name="infoLbl" Margin="-1,17,9,0" FontWeight="Bold" Content="{Binding InfoString}"/>
         </Border>
         <Button x:Name="playBtn" Content="Play" Margin="421,287,8,0" IsDefault="True" FontWeight="Bold" FontSize="30" Click="playBtn_Click" BorderThickness="0" IsEnabled="False" Background="#FF1C272E" BorderBrush="#FF1C272E" Foreground="#FFAAAAAA" Height="53" VerticalAlignment="Top"/>
         <Button x:Name="updateBtn" Content="Update Client" Margin="421,345,8,0" FontSize="15" BorderThickness="0" Background="#FF1C272E" BorderBrush="#FF1C272E" Foreground="#FFAAAAAA" Height="35" VerticalAlignment="Top"/>

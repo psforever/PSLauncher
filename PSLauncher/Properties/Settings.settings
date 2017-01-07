@@ -11,5 +11,17 @@
     <Setting Name="AccountURL" Type="System.String" Scope="User">
       <Value Profile="(Default)">http://www.psemulator.org/forums</Value>
     </Setting>
+    <Setting Name="UpdateServerIP" Type="System.String" Scope="User">
+      <Value Profile="(Default)">104.236.204.206</Value>
+    </Setting>
+    <Setting Name="UpdateServerUser" Type="System.String" Scope="User">
+      <Value Profile="(Default)">launcher</Value>
+    </Setting>
+    <Setting Name="UpdateServerPassword" Type="System.String" Scope="User">
+      <Value Profile="(Default)">psemu</Value>
+    </Setting>
+    <Setting Name="PlanetsideInstallDir" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
   </Settings>
 </SettingsFile>
