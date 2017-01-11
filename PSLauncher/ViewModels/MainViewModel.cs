@@ -1,32 +1,55 @@
 ﻿using Newtonsoft.Json;
+using PSLauncher.Commands;
+using PSLauncher.Interfaces;
 using PSLauncher.Properties;
 using PSNetCommon;
 using PSNetCommon.Download;
 using PSNetCommon.Models;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 using System.Xml.Linq;
 
 namespace PSLauncher.ViewModels
 {
-    class MainViewModel : BaseViewModel
+    class MainViewModel : BaseViewModel, IProgressView
     {
         private const string CLIENT_INI = @"\client.ini";
-        private const string PLANETSIDE_EXE = @"\planetside.exe";
 
-        // Command line argument required to bypass Launcher warning error.
-        private const string STAGING_TEST = "/K:StagingTest"; 
+        private ChangeClientDirectoryCommand _changeClientDirectoryCommand = new ChangeClientDirectoryCommand();
+        public ChangeClientDirectoryCommand ChangeClientDirectoryCommand
+        {
+            get { return _changeClientDirectoryCommand; }
+        }
 
+        private UpdateCommand _updateCommand;
+        private PlayCommand _playCommand;
+        public ICommand StartButtonCommand { get; private set; }
+
+        public string StartButtonText
+        {
+            get { return (_updateCommand.HasExecuted) ? "Play" : "Update"; }
+        }
+
+        #region IProgressView
         private int _progress;
         public int Progress
         {
             get { return _progress; }
             set { SetProperty(ref _progress, value, "Progress"); }
         }
+
+        public string ProgressInfo
+        {
+            get { return InfoString; }
+            set { InfoString = value; }
+        }
+        #endregion
 
         private string _patchNotes;
         public string PatchNotes
@@ -45,6 +68,25 @@ namespace PSLauncher.ViewModels
         public MainViewModel()
         {
             PatchNotes = "Currently loading the launcher.\n Please wait";
+            _updateCommand = new UpdateCommand(this);
+            _updateCommand.CanExecuteChanged += _updateCommand_CanExecuteChanged;
+
+            _playCommand = new PlayCommand();
+
+            StartButtonCommand = new SequentialCompositeCommand(new List<ICommand>
+            {
+                _updateCommand,
+                _playCommand
+            });
+        }
+
+        private void _updateCommand_CanExecuteChanged(object sender, EventArgs e)
+        {
+            if (!_updateCommand.IsExecuting)
+            {
+                OnPropertyChanged("StartButtonCommand");
+                OnPropertyChanged("StartButtonText");
+            }
         }
 
         public void ViewLoaded()
@@ -65,34 +107,6 @@ namespace PSLauncher.ViewModels
             });
         }
 
-        public void ComputeCheckSums()
-        {
-            Task.Factory.StartNew(() =>
-            {
-                InfoString = Resources.CheckSumInfoString;
-                Progress = 0;
-
-                FileCheckSumRequest request = new FileCheckSumRequest();
-
-                string[] files = Directory.GetFiles(Settings.Default.PlanetsideInstallDir, 
-                    "*", SearchOption.AllDirectories);
-
-                Stopwatch sw = new Stopwatch();
-                sw.Start();
-                for (int i = 0; i < files.Length; i++)
-                {
-                    string checksum = CheckSum.CalculateMD5(files[i]);
-                    request.AddFile(files[i], checksum);
-                    Progress = (int)(100 * ((i + 1F) / files.Length));
-                }
-                sw.Stop();
-
-#if DEBUG
-                InfoString = "Checksum calculation took: " + sw.Elapsed.ToString();
-#endif
-            });
-        }
-
         /// <summary>
         /// Performs basic checks on the various settings to ensure that 
         /// they are correct. User prompts will occur to populate any missing
@@ -104,18 +118,7 @@ namespace PSLauncher.ViewModels
 
             if (string.IsNullOrEmpty(planetsideDir) || !Directory.Exists(planetsideDir))
             {
-                var dialog = new System.Windows.Forms.FolderBrowserDialog();
-                dialog.Description = Resources.PlanetsideDirPrompt;
-
-                // HACK: There should be a more elegant way to do this.
-                // Just quick and dirty here... Prompt until we get something.
-                do
-                {
-                    var result = dialog.ShowDialog();
-                } while (!Directory.Exists(dialog.SelectedPath));
-
-                Settings.Default.PlanetsideInstallDir = dialog.SelectedPath;
-                Settings.Default.Save();
+                ChangeClientDirectoryCommand.Execute(null);
             }
         }
 
@@ -147,43 +150,6 @@ namespace PSLauncher.ViewModels
             var info = JsonConvert.DeserializeObject<LauncherInfo>(infoString);
 
             return info;
-        }
-
-        /// <summary>
-        /// Runs the Planetside.exe from the current directory.
-        /// </summary>
-        public void RunPlanetsideExe()
-        {
-            var file = Settings.Default.PlanetsideInstallDir + PLANETSIDE_EXE;
-            System.Diagnostics.Process app;
-
-            if (!System.IO.File.Exists(file))
-            {
-                if (MessageBox.Show(Resources.NoPlanetsideDirFound) == MessageBoxResult.OK)
-                {
-                    /*
-                     * This runs when using a Release build of the program.
-                     * This allows functionality when running in debug mode inside of Visual Studio.
-                     */
-#if !DEBUG
-                    Close();
-#endif
-                }
-            }
-            else
-            {
-                app = new System.Diagnostics.Process();
-                app.StartInfo.FileName = file;
-                app.StartInfo.Arguments = STAGING_TEST; // Required to bypass launcher.
-                app.Start();
-                /*
-                 * This runs when using a Release build of the program.
-                 * This allows functionality when running in debug mode inside of Visual Studio.
-                 */
-#if !DEBUG
-                Close();
-#endif
-            }
         }
 
         /// <summary>

@@ -108,5 +108,17 @@ namespace PSLauncher.Properties {
                 this["PlanetsideInstallDir"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("/K:StagingTest")]
+        public string PlanetsideExeArgs {
+            get {
+                return ((string)(this["PlanetsideExeArgs"]));
+            }
+            set {
+                this["PlanetsideExeArgs"] = value;
+            }
+        }
     }
 }

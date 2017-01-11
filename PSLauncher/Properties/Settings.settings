@@ -23,5 +23,8 @@
     <Setting Name="PlanetsideInstallDir" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="PlanetsideExeArgs" Type="System.String" Scope="User">
+      <Value Profile="(Default)">/K:StagingTest</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

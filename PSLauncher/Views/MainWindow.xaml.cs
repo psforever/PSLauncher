@@ -58,11 +58,6 @@ namespace PSLauncher
                 var duration = new Duration(TimeSpan.FromSeconds(0.1));
                 var doubleAnimation = new DoubleAnimation(progress, duration);
                 prgBar.BeginAnimation(ProgressBar.ValueProperty, doubleAnimation);
-
-                if (progress == 100)
-                {
-                    playBtn.IsEnabled = true;
-                }
             }
             else
             {
@@ -86,16 +81,6 @@ namespace PSLauncher
 
             if (prgBar.Value == 100)
                 prgLbl.Content = "Complete";
-        }
-
-        /// <summary>
-        /// Play Button Click Event
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void playBtn_Click(object sender, RoutedEventArgs e)
-        {
-            _viewModel.RunPlanetsideExe();
         }
 
         /// <summary>
