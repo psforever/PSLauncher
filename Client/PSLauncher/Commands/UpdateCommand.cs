@@ -45,8 +45,7 @@ namespace PSLauncher.Commands
                     FileCheckSumRequest request = new FileCheckSumRequest();
                     ComputeCheckSums(request);
 
-                    // TODO: Perform web request with update server to 
-                    // verify the files checksums are correct.
+                    List<string> filesToUpdate = request.Send();
 
                     HasExecuted = true;
                 }
@@ -70,12 +69,23 @@ namespace PSLauncher.Commands
 
             Stopwatch sw = new Stopwatch();
             sw.Start();
+
+            var writer = new StreamWriter(File.OpenWrite("extractFile.csv"));
+
             for (int i = 0; i < files.Length; i++)
             {
                 string checksum = CheckSum.CalculateMD5(files[i]);
                 request.AddFile(files[i], checksum);
                 _view.Progress = (int)(100 * ((i + 1F) / files.Length));
+
+                
+
+                writer.WriteLine("INSERT INTO client_files (filename, checksum) VALUES ('{0}', '{1}');", 
+                    files[i].Replace(Settings.Default.PlanetsideInstallDir, "").Replace(@"\", @"/"), 
+                    checksum);
             }
+
+            writer.Close();
             sw.Stop();
 
 #if DEBUG
