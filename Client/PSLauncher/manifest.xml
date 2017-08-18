@@ -29,3 +29,4 @@
   </updates>
 </psforever>
 <!-- This is the old method used by the launcher that is to be replaced by manifest.json -->
+<!-- This is kept for reference. Not needed by the launcher for end-user so can be deleted if desired-->
