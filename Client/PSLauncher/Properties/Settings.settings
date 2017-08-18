@@ -24,7 +24,7 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="PlanetsideExeArgs" Type="System.String" Scope="User">
-      <Value Profile="(Default)">/K:StagingTest</Value>
+      <Value Profile="(Default)">/K:StagingTest /CC</Value>
     </Setting>
     <Setting Name="IpAddress" Type="System.String" Scope="User">
       <Value Profile="(Default)">127.0.0.1</Value>
