@@ -79,7 +79,7 @@ namespace PSLauncher.Commands
                     string checksum = CheckSum.CalculateMD5(files[i]);
                     request.AddFile(files[i], checksum);
                     _view.Progress = (int)(100 * ((i + 1F) / files.Length));
-                    
+
                     writer.WriteLine("INSERT INTO client_files (filename, checksum) VALUES ('{0}', '{1}');",
                         files[i].Replace(Settings.Default.PlanetsideInstallDir, "").Replace(@"\", @"/"),
                         checksum);
@@ -90,7 +90,7 @@ namespace PSLauncher.Commands
             sw.Stop();
 
 #if DEBUG
-            _view.ProgressInfo = "Checksum calculation took: " + sw.Elapsed.ToString();
+            _view.ProgressInfo = $"Checksum calculation took: {sw.Elapsed.Seconds.ToString()} seconds";
 #endif
         }
     }
