@@ -74,15 +74,16 @@ namespace PSLauncher.Commands
 
             for (int i = 0; i < files.Length; i++)
             {
-                string checksum = CheckSum.CalculateMD5(files[i]);
-                request.AddFile(files[i], checksum);
-                _view.Progress = (int)(100 * ((i + 1F) / files.Length));
-
-                
-
-                writer.WriteLine("INSERT INTO client_files (filename, checksum) VALUES ('{0}', '{1}');", 
-                    files[i].Replace(Settings.Default.PlanetsideInstallDir, "").Replace(@"\", @"/"), 
-                    checksum);
+                if (files[i] != "extractFile.csv")
+                {
+                    string checksum = CheckSum.CalculateMD5(files[i]);
+                    request.AddFile(files[i], checksum);
+                    _view.Progress = (int)(100 * ((i + 1F) / files.Length));
+                    
+                    writer.WriteLine("INSERT INTO client_files (filename, checksum) VALUES ('{0}', '{1}');",
+                        files[i].Replace(Settings.Default.PlanetsideInstallDir, "").Replace(@"\", @"/"),
+                        checksum);
+                }
             }
 
             writer.Close();

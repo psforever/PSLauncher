@@ -31,9 +31,10 @@
             this.Reset = new System.Windows.Forms.Button();
             this.ManifestDesc = new System.Windows.Forms.TextBox();
             this.ManifestFile = new System.Windows.Forms.TextBox();
-            this.ManifestLabel = new System.Windows.Forms.Label();
+            this.manifestLabel = new System.Windows.Forms.Label();
             this.Cancel = new System.Windows.Forms.Button();
             this.Save = new System.Windows.Forms.Button();
+            this.useIpCheckBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // Reset
@@ -66,14 +67,14 @@
             this.ManifestFile.Size = new System.Drawing.Size(276, 20);
             this.ManifestFile.TabIndex = 9;
             // 
-            // ManifestLabel
+            // manifestLabel
             // 
-            this.ManifestLabel.AutoSize = true;
-            this.ManifestLabel.Location = new System.Drawing.Point(13, 12);
-            this.ManifestLabel.Name = "ManifestLabel";
-            this.ManifestLabel.Size = new System.Drawing.Size(66, 13);
-            this.ManifestLabel.TabIndex = 8;
-            this.ManifestLabel.Text = "Manifest File";
+            this.manifestLabel.AutoSize = true;
+            this.manifestLabel.Location = new System.Drawing.Point(13, 12);
+            this.manifestLabel.Name = "manifestLabel";
+            this.manifestLabel.Size = new System.Drawing.Size(66, 13);
+            this.manifestLabel.TabIndex = 8;
+            this.manifestLabel.Text = "Manifest File";
             // 
             // Cancel
             // 
@@ -96,18 +97,30 @@
             this.Save.UseVisualStyleBackColor = true;
             this.Save.Click += new System.EventHandler(this.Save_Click);
             // 
+            // useIpCheckBox
+            // 
+            this.useIpCheckBox.AutoSize = true;
+            this.useIpCheckBox.Location = new System.Drawing.Point(193, 8);
+            this.useIpCheckBox.Name = "useIpCheckBox";
+            this.useIpCheckBox.Size = new System.Drawing.Size(99, 17);
+            this.useIpCheckBox.TabIndex = 12;
+            this.useIpCheckBox.Text = "Use IP Address";
+            this.useIpCheckBox.UseVisualStyleBackColor = true;
+            this.useIpCheckBox.CheckedChanged += new System.EventHandler(this.useIpCheckBox_CheckedChanged);
+            // 
             // ChangeServers
             // 
             this.AcceptButton = this.Save;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.Cancel;
-            this.ClientSize = new System.Drawing.Size(304, 132);
+            this.ClientSize = new System.Drawing.Size(304, 133);
             this.ControlBox = false;
+            this.Controls.Add(this.useIpCheckBox);
             this.Controls.Add(this.Reset);
             this.Controls.Add(this.ManifestDesc);
             this.Controls.Add(this.ManifestFile);
-            this.Controls.Add(this.ManifestLabel);
+            this.Controls.Add(this.manifestLabel);
             this.Controls.Add(this.Cancel);
             this.Controls.Add(this.Save);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -131,8 +144,9 @@
         internal System.Windows.Forms.Button Reset;
         internal System.Windows.Forms.TextBox ManifestDesc;
         internal System.Windows.Forms.TextBox ManifestFile;
-        internal System.Windows.Forms.Label ManifestLabel;
+        internal System.Windows.Forms.Label manifestLabel;
         internal System.Windows.Forms.Button Cancel;
         internal System.Windows.Forms.Button Save;
+        private System.Windows.Forms.CheckBox useIpCheckBox;
     }
 }

@@ -12,7 +12,7 @@ namespace PSLauncher.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "14.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.0.1.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -25,8 +25,8 @@ namespace PSLauncher.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://raw.githubusercontent.com/PSEmulator/PSLauncher/master/PSLauncher/mainfes" +
-            "t.json")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://raw.githubusercontent.com/PSEmulator/PSLauncher/master/Client/PSLauncher/" +
+            "mainfest.json")]
         public string Manifest {
             get {
                 return ((string)(this["Manifest"]));
@@ -38,8 +38,8 @@ namespace PSLauncher.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("https://raw.githubusercontent.com/PSEmulator/PSLauncher/master/PSLauncher/mainfes" +
-            "t.json")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://raw.githubusercontent.com/PSEmulator/PSLauncher/master/Client/PSLauncher/" +
+            "mainfest.json")]
         public string DefaultManifest {
             get {
                 return ((string)(this["DefaultManifest"]));
@@ -118,6 +118,30 @@ namespace PSLauncher.Properties {
             }
             set {
                 this["PlanetsideExeArgs"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("127.0.0.1")]
+        public string IpAddress {
+            get {
+                return ((string)(this["IpAddress"]));
+            }
+            set {
+                this["IpAddress"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool UseIpConnect {
+            get {
+                return ((bool)(this["UseIpConnect"]));
+            }
+            set {
+                this["UseIpConnect"] = value;
             }
         }
     }

@@ -73,7 +73,7 @@ namespace PSLauncher
         /// <param name="e"></param>
         private void prgBar_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            prgLbl.Content = (int)(prgBar.Value) + " / 100";
+            prgLbl.Content = $"{(int)(prgBar.Value)} / 100";
             if (prgBar.Value > 50)
             {
                 prgLbl.Foreground = Brushes.Black;

@@ -171,19 +171,25 @@ namespace PSLauncher.ViewModels
         /// <param name="emuInfo"></param>
         public void SetPatchNotes(EmulatorInfo emuInfo)
         {
+            emuInfo.Patches.Reverse();     // Up to date at the top
+
             string patchNotes = string.Empty;  // Clear the Patch Notes area
 
             foreach (var patch in emuInfo.Patches)
             {
+                patchNotes += $"\t\tVersion {patch.Version}:{Environment.NewLine + Environment.NewLine}";
+
                 foreach (var change in patch.Changes)
                 {
-                    patchNotes += $" - {change.Date.ToShortDateString()}: \t{change.Value}{Environment.NewLine}";
+                    patchNotes += $"{change.Date.ToShortDateString()}:{Environment.NewLine} - {change.Value}{Environment.NewLine + Environment.NewLine}";
                 }
 
                 patchNotes += Environment.NewLine;
             }
 
             PatchNotes = patchNotes;
+
+            emuInfo.Patches.Reverse();      // Revert in case this is needed elsewhere in future.
         }
 
         /// <summary>
@@ -192,32 +198,48 @@ namespace PSLauncher.ViewModels
         /// <param name="netInfo">NetworkInfo</param>
         public void UpdateClientIni(NetworkInfo netInfo)
         {
-            var file = Settings.Default.PlanetsideInstallDir + CLIENT_INI;
 
-            if (!System.IO.File.Exists(file))
+            if (Settings.Default.UseIpConnect == false)
             {
-                if (MessageBox.Show(Resources.NoPlanetsideDirFound) == MessageBoxResult.OK)
+                var file = Settings.Default.PlanetsideInstallDir + CLIENT_INI;
+
+                if (System.IO.File.Exists(file))
                 {
-#if !DEBUG
-                    Close();
-#endif
+                    var copy = GetCurrentPath() + @"\ini_backup" + CLIENT_INI;
+
+                    System.IO.File.Copy(file, $"{copy}_{DateTime.Now.ToString("yyyy-MM-dd_hh-mm-ss")}.bak");
+
+                    Directory.CreateDirectory(GetCurrentPath() + @"\ini_backup");
                 }
-                else
+
+                using (var strWriter = new System.IO.StreamWriter(file, false))
                 {
-                    System.IO.File.Copy(file, $"{file}.bak", true);
+                    strWriter.WriteLine("[network]" + Environment.NewLine);
 
-                    using (var strWriter = new System.IO.StreamWriter(file, false))
+                    foreach (var server in netInfo.Servers)
                     {
-                        strWriter.WriteLine("[network]" + Environment.NewLine);
+                        var address = $"{server.Address}:{server.Port}";
 
-                        foreach (var server in netInfo.Servers)
-                        {
-                            var address = $"{server.Address}:{server.Port}";
-
-                            strWriter.WriteLine($"# {server.Namespace}{Environment.NewLine}");
-                            strWriter.WriteLine($"{server.Id}={address}");
-                        }
+                        strWriter.WriteLine($"# {server.Namespace}{Environment.NewLine}");
+                        strWriter.WriteLine($"{server.Id}={address}");
                     }
+                }
+            }
+            else
+            {
+                var file = Settings.Default.PlanetsideInstallDir + CLIENT_INI;
+                
+                var copy = GetCurrentPath() + @"\ini_backup" + CLIENT_INI;
+
+                Directory.CreateDirectory(GetCurrentPath() + @"\ini_backup");
+
+                System.IO.File.Copy(file, $"{copy}_{DateTime.Now.ToString("yyyy-MM-dd_hh-mm-ss")}.bak");
+
+                using (var strWriter = new StreamWriter(file, false))
+                {
+                    strWriter.WriteLine("[network]" + Environment.NewLine);
+                    strWriter.WriteLine($"# IPConnect{Environment.NewLine}");
+                    strWriter.WriteLine($"login0={Settings.Default.IpAddress}");
                 }
             }
 
