@@ -7,7 +7,7 @@
       {
         "namespace": "PSFPLS",
         "id": "login0",
-        "address": "62.210.250.199",
+        "address": "play.psforever.net:51000",
         "port": "51000"
       }
     ]
@@ -33,6 +33,23 @@
           {
             "date": "2017-01-03",
             "value": "Emulator Launcher completely rewritten."
+          }
+        ]
+      },
+      {
+        "version": "3.6.4",
+        "changes": [
+          {
+            "date": "2017-03-01",
+            "value": "PSForever has reverted back to Scala project at this point and will stick to the Scala project from this point forward. The effort to move to C++ was determined to be completely unnecessary and a loss of progress."
+          },
+          {
+            "date": "2017-08-01",
+            "value": "So a lot was accomplished within the first half of the year and early summer. The server is working (you can connect and doors function), is capable of multiplayer (you can see other people and use equipment terminals), and is capable of combat (yay, pew pew). More work is now beginning on vehicles, and there are plans for base control, the lattice, and other functionality."
+          },
+          {
+            "date": "2017-08-17",
+            "value":  "The PSLauncher has been given its first update in 218 days. The launcher was moved to MVVM Architecture in February to allow for better workflow and organization of the project. I had not planned to move over but XXPX1 took charge and successfully refactored the launcher's codebase. There's still more work to do and plans to \"beautify\" the launcher even further."
           }
         ]
       }
