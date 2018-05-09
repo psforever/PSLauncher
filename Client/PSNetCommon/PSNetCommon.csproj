@@ -75,6 +75,7 @@
   <ItemGroup>
     <Compile Include="CheckSum.cs" />
     <Compile Include="Download\Downloader.cs" />
+    <Compile Include="Download\FileHost.cs" />
     <Compile Include="Download\Update.cs" />
     <Compile Include="Download\UpdateCheck.cs" />
     <Compile Include="EmulatorInfo.cs" />
