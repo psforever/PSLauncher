@@ -5,10 +5,10 @@
     "location": "EU FR",
     "servers": [
       {
-        "namespace": "PSFPLS",
+        "namespace": "Current PSFPLS",
         "id": "login0",
-        "address": "play.psforever.net:51000",
-        "port": "51000"
+        "address": "play.psforever.net:51200",
+        "port": "51200"
       }
     ]
   },

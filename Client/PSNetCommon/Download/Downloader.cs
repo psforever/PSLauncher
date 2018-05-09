@@ -12,15 +12,9 @@ namespace PSNetCommon.Download
     /// </summary>
     public class Downloader
     {
-        public string Server { get; private set; }
-        public string Username { get; private set; }
-        public string Password { get; private set; }
-
         public Downloader(string server, string username, string password)
         {
-            Server = server;
-            Username = username;
-            Password = password;
+            ServerFileHost = new FileHost(server, username, password);
         }
 
         /// <summary>
@@ -34,13 +28,13 @@ namespace PSNetCommon.Download
                 // See: https://msdn.microsoft.com/en-us/library/ms229711(v=vs.110).aspx
 
                 // Get the object used to communicate with the server.
-                Uri uri = new Uri("ftp://" + Server + ":22" + fullFileName);
+                Uri uri = new Uri("ftp://" + ServerFileHost + ":22" + fullFileName);
                 FtpWebRequest request = (FtpWebRequest)WebRequest.Create(uri);
                 //request.KeepAlive = false;
                 //request.Timeout = -1;
                 //request.UsePassive = true;
                 request.Method = WebRequestMethods.Ftp.DownloadFile;
-                request.Credentials = new NetworkCredential(Username, Password);
+                request.Credentials = new NetworkCredential(ServerFileHost.Username, ServerFileHost.Password);
 
                 using (FtpWebResponse response = (FtpWebResponse)request.GetResponse())
                 {
@@ -58,5 +52,7 @@ namespace PSNetCommon.Download
                 Console.WriteLine(ex.Message);
             }
         }
+
+        public FileHost ServerFileHost { get; private set; }
     }
 }
