@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PSNetCommon.Download
+namespace Launcher.Config
 {
-    class Update
+    class Repository
     {
     }
 }

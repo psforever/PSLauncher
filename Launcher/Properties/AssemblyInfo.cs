@@ -5,10 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("PSNetCommon")]
-[assembly: AssemblyDescription("Common .net Files that can be used accross projects.")]
+[assembly: AssemblyTitle("Launcher")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("Launcher")]
+[assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -18,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("5155a175-15a4-4de5-980e-2c0ce2940e36")]
+[assembly: Guid("c95c10d1-46cd-4483-9157-2e284ed9366b")]
 
 // Version information for an assembly consists of the following four values:
 //
