@@ -11,9 +11,13 @@ namespace Launcher.LauncherConfiguration
     /// </summary>
     public class Location
     {
-        public void SaveToAppData()
+        /// <summary>
+        /// Returns Local Application Data
+        /// </summary>
+        /// <returns>File Path</returns>
+        public string GetAppData()
         {
-
+            return Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
         }
     }
 }

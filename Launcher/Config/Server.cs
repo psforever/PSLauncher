@@ -12,5 +12,20 @@ namespace Launcher.Config
         [JsonRequired]
         [JsonProperty(PropertyName = "Address")]
         public IPAddress Address { get; set; }
+        [JsonRequired]
+        [JsonProperty(PropertyName = "Location")]
+        public string ServerLocation { get; set; }
+        [JsonRequired]
+        [JsonProperty(PropertyName = "ServerType")]
+        public ServerType ServerType { get; set; }
+
+        [JsonRequired]
+        [JsonProperty(PropertyName = "ManifestLocation")]
+        public string Manifest { get; set; }
+    }
+
+    public enum ServerType
+    {
+        Indev, Alpha, Beta, Release
     }
 }

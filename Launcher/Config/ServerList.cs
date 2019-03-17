@@ -8,5 +8,15 @@ namespace Launcher.Config
     {
         [JsonProperty(PropertyName = "Servers")]
         public List<Server> Servers { get; set; }
+
+        public void Save()
+        {
+
+        }
+
+        public void Load()
+        {
+
+        }
     }
 }

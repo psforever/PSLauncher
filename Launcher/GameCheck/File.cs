@@ -19,6 +19,10 @@ namespace Launcher.GameCheck
             _fileHash = GetMD5Hash();
         }
 
+        /// <summary>
+        /// Basic MD5 hashing of files
+        /// </summary>
+        /// <returns></returns>
         private string GetMD5Hash()
         {
             using (var md5 = MD5.Create())
