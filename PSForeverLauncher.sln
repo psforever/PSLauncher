@@ -3,7 +3,25 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30225.117
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PSForeverLauncher", "PSForeverLauncher\PSForeverLauncher.csproj", "{C240ED28-9DA0-4077-BD0A-6D8AFF0F78E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PSF.Data", "PSF.Data\PSF.Data.csproj", "{19959A6F-76BC-4028-8A80-86434A8E26E3}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C240ED28-9DA0-4077-BD0A-6D8AFF0F78E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C240ED28-9DA0-4077-BD0A-6D8AFF0F78E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C240ED28-9DA0-4077-BD0A-6D8AFF0F78E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C240ED28-9DA0-4077-BD0A-6D8AFF0F78E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19959A6F-76BC-4028-8A80-86434A8E26E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19959A6F-76BC-4028-8A80-86434A8E26E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19959A6F-76BC-4028-8A80-86434A8E26E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19959A6F-76BC-4028-8A80-86434A8E26E3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
