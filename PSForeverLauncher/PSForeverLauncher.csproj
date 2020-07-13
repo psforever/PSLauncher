@@ -12,4 +12,7 @@
     <PackageReference Include="Avalonia.Desktop" Version="0.9.11" />
     <PackageReference Include="Avalonia.ReactiveUI" Version="0.9.11" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PSF.Data\PSF.Data.csproj" />
+  </ItemGroup>
 </Project>
